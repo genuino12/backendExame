@@ -1,0 +1,25 @@
+{
+  "name": "backendexame",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/genuino12/backendExame.git"
+  },
+  "author": "Lucas Genuíno",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/genuino12/backendExame/issues"
+  },
+  "homepage": "https://github.com/genuino12/backendExame#readme",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "mysql2": "^3.11.3"
+  }
+}
