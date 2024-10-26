@@ -1,5 +1,5 @@
-import Interessado from "../MODEL/interessado.js"; 
-import Filhote from "../MODEL/filhote.js"; 
+import Interessado from "../MODEL/interessados.js"; 
+import Filhote from "../MODEL/filhotes.js"; 
 
  class ControleGeral {
     async cadastrar(req, res) {

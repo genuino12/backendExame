@@ -7,18 +7,18 @@ const rota = Router();
 const ctrlCadastro = new ControleGeral(); 
 
 
-rota.get("/filhote", ctrlCadastro.consulta) 
-    .get("/filhote/:termoBusca", ctrlCadastro.consulta) 
-    .post("/filhote", ctrlCadastro.cadastrar) 
-    .put("/filhote", ctrlCadastro.alterar) 
-    .patch("/filhote", ctrlCadastro.alterar) 
-    .delete("/filhote", ctrlCadastro.excluir); 
+rota.get("/filhotes", ctrlCadastro.consulta) 
+    .get("/filhotes/:termoBusca", ctrlCadastro.consulta) 
+    .post("/filhotes", ctrlCadastro.cadastrar) 
+    .put("/filhotes", ctrlCadastro.alterar) 
+    .patch("/filhotes", ctrlCadastro.alterar) 
+    .delete("/filhotes", ctrlCadastro.excluir); 
 
-rota.get("/interessado", ctrlCadastro.consulta) 
-    .get("/interessado/:termoBusca", ctrlCadastro.consulta) 
-    .post("/interessado", ctrlCadastro.cadastrar) 
-    .put("/interessado", ctrlCadastro.alterar) 
-    .patch("/interessado", ctrlCadastro.alterar) 
-    .delete("/interessado", ctrlCadastro.excluir); 
+rota.get("/interessados", ctrlCadastro.consulta) 
+    .get("/interessados/:termoBusca", ctrlCadastro.consulta) 
+    .post("/interessados", ctrlCadastro.cadastrar) 
+    .put("/interessados", ctrlCadastro.alterar) 
+    .patch("/interessados", ctrlCadastro.alterar) 
+    .delete("/interessados", ctrlCadastro.excluir); 
 
 export default rota;

@@ -1,14 +1,12 @@
 import conectar from "./conexao.js"; 
-import Filho from "../MODEL/filhote.js"; 
+import Filho from "../MODEL/filhotes.js"; 
 
   class FilhoteDAO {
     constructor() {}
 
     async init() {
         try {
-            const conexao = await conectar();
-
-        
+            const conexao = await conectar();     
             const sqlFilhotes = `CREATE TABLE filhotes (
                 id INT(11) NOT NULL AUTO_INCREMENT,
                 especie VARCHAR(100) NOT NULL,

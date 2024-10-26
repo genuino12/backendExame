@@ -11,8 +11,8 @@ app.use(cors({
 }));
 
 app.use(express.json());
-app.use('/interessado_Filhote', rota);
 
+app.use(rota);
 
 
 app.listen(porta, host, () => {

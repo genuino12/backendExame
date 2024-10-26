@@ -1,5 +1,5 @@
 import conectar from "./conexao.js";
-import Interessado from "../MODEL/interessado.js";
+import Interessado from "../MODEL/interessados.js";
 
 export class InteressadoDAO {
     constructor() {}
