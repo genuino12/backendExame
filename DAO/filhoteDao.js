@@ -1,7 +1,7 @@
 import conectar from "./conexao.js"; 
-import Filho from "./model/filhote.js"; 
+import Filho from "../MODEL/filhote.js"; 
 
-export default class FilhoteDAO {
+  class FilhoteDAO {
     constructor() {}
 
     async init() {
@@ -116,3 +116,4 @@ export default class FilhoteDAO {
         }
     }
 }
+export default FilhoteDAO;

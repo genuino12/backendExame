@@ -1,84 +1,58 @@
-import interessadoDAO from "../DAO/interessadoDAO.js";
+import  interessadoDAO  from "../DAO/interessadoDAO.js";
 
- class interessado {
-    #cpf;
+export class Interessado {
     #nome;
-    #telefone;
+    #cpf;
     #email;
+    #telefone;
 
-    constructor(cpf, nomeInteressado, telefone, email) {
+    constructor(nome, cpf, email, telefone) {
+        this.#nome = nome;
         this.#cpf = cpf;
-        this.#nome = nomeInteressado;
-        this.#telefone = telefone;
         this.#email = email;
+        this.#telefone = telefone;
     }
 
-    
-    get cpf() {
-        return this.#cpf;
-    }
+    get nome() { return this.#nome; }
+    get cpf() { return this.#cpf; }
+    get email() { return this.#email; }
+    get telefone() { return this.#telefone; }
 
-    get nome_interessado() {
-        return this.#nome;
-    }
-
-    get telefone() {
-        return this.#telefone;
-    }
-
-    get email() {
-        return this.#email;
-    }
-
-    
     toString() {
-        return `CPF: ${this.#cpf}
-    Nome: ${this.#nome}
-    Telefone: ${this.#telefone}
-    Email: ${this.#email}
-    `;
+        return `Nome: ${this.#nome}\nCPF: ${this.#cpf}\nEmail: ${this.#email}\nTelefone: ${this.#telefone}`;
     }
 
     toJSON() {
         return {
+            nome: this.#nome,
             cpf: this.#cpf,
-            nome_interessado: this.#nome,
-            telefone: this.#telefone,
-            email: this.#email
+            email: this.#email,
+            telefone: this.#telefone
         };
     }
 
-    
     async incluir() {
         const intDao = new interessadoDAO();
-
-        const interessadoData = {
-            cpf: this.#cpf,
-            nome_interessado: this.#nome,
-            telefone: this.#telefone,
-            email: this.#email
-        };
-
-        await intDao.gravar(interessadoData);
+        await intDao.gravar(this.toJSON());
     }
 
-    
     async alterar() {
         const intDao = new interessadoDAO();
         await intDao.alterar(this);
     }
 
-   
     async excluir() {
         const intDao = new interessadoDAO();
         await intDao.excluir(this);
     }
 
-    
     async consulta(termoBusca) {
         const intDao = new interessadoDAO();
         return await intDao.consulta(termoBusca);
     }
 }
 
-export default interessado;
+
+
+export default Interessado;
+

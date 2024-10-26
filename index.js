@@ -11,10 +11,9 @@ app.use(cors({
 }));
 
 app.use(express.json());
-app.use('/interessado', rota);
+app.use('/interessado_Filhote', rota);
 
-app.use(express.json());
-app.use('/filhote', rota);
+
 
 app.listen(porta, host, () => {
     console.log(`Servidor Iniciado em http://${host}:${porta}`);

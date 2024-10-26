@@ -1,6 +1,6 @@
 import filhoteDAO from "../DAO/filhoteDAO.js";
 
-class filhote {
+export class filhote {
     #especie;
     #raca;
 
