@@ -1,6 +1,6 @@
 import interessadoDAO from "../DAO/interessadoDAO.js";
 
-export default class Interessado {
+ class interessado {
     #cpf;
     #nome;
     #telefone;
@@ -80,3 +80,5 @@ export default class Interessado {
         return await intDao.consulta(termoBusca);
     }
 }
+
+export default interessado;

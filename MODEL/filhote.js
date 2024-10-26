@@ -1,6 +1,6 @@
 import filhoteDAO from "../DAO/filhoteDAO.js";
 
-export default class Filhote {
+class filhote {
     #especie;
     #raca;
 
@@ -62,3 +62,4 @@ export default class Filhote {
         return await filDao.consulta(termoBusca);
     }
 }
+export default filhote;

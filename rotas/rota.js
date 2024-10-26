@@ -1,22 +1,24 @@
 import { Router } from 'express';
-import CadastroController from './controle/controletotal.js';
-
-const rotaCadastro = Router();
-const ctrlCadastro = new CadastroController(); 
+import ControleGeral from '../controle/controle.js';
 
 
-rotaCadastro.get("/filhote", ctrlCadastro.consultar) 
-    .get("/filhote/:termoBusca", ctrlCadastro.consultar) 
+
+const rota = Router();
+const ctrlCadastro = new ControleGeral(); 
+
+
+rota.get("/filhote", ctrlCadastro.consulta) 
+    .get("/filhote/:termoBusca", ctrlCadastro.consulta) 
     .post("/filhote", ctrlCadastro.cadastrar) 
     .put("/filhote", ctrlCadastro.alterar) 
     .patch("/filhote", ctrlCadastro.alterar) 
     .delete("/filhote", ctrlCadastro.excluir); 
 
-rotaCadastro.get("/interessado", ctrlCadastro.consultar) 
-    .get("/interessado/:termoBusca", ctrlCadastro.consultar) 
+rota.get("/interessado", ctrlCadastro.consulta) 
+    .get("/interessado/:termoBusca", ctrlCadastro.consulta) 
     .post("/interessado", ctrlCadastro.cadastrar) 
     .put("/interessado", ctrlCadastro.alterar) 
     .patch("/interessado", ctrlCadastro.alterar) 
     .delete("/interessado", ctrlCadastro.excluir); 
 
-export default rotaCadastro;
+export default rota;

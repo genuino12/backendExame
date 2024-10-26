@@ -1,7 +1,7 @@
-import Interessado from "./model/interessado.js";
-import Filhote from "./model/filhote.js";
+import Interessado from '../MODEL/interessado.js';
+import Filhote from "../MODEL/filhote.js";
 
-export default class ControleGeral {
+class ControleGeral {
 
     
     cadastrar(req, res) {
@@ -249,3 +249,4 @@ export default class ControleGeral {
         }
     }
 }
+export default ControleGeral;
