@@ -1,12 +1,13 @@
 import filhoteDAO from "../DAO/filhoteDAO.js";
 
-export class filhote {
+ class filhote {
     #especie;
     #raca;
 
-    constructor(especie, raca) {
+    constructor( especie, raca) {
         this.#especie = especie;
         this.#raca = raca;
+        this.filhoteDAO = new filhoteDAO(); 
     }
 
     
@@ -17,10 +18,12 @@ export class filhote {
     get raca() {
         return this.#raca;
     }
+ 
 
     
     toString() {
-        return `Espécie: ${this.#especie}
+        return`
+        Espécie: ${this.#especie}
     Raça: ${this.#raca}
     `;
     }
@@ -32,34 +35,22 @@ export class filhote {
         };
     }
 
-    
     async incluir() {
-        const filDao = new filhoteDAO();
-
-        const filhoteData = {
-            especie: this.#especie,
-            raca: this.#raca
-        };
-
-        await filDao.gravar(filhoteData);
+        await this.filhoteDAO.gravarFilhote(this.toJSON());
     }
 
-    
     async alterar() {
-        const filDao = new filhoteDAO();
-        await filDao.alterar(this);
+        await this.filhoteDAO.alterarFilhote(this.toJSON());
     }
 
-    
     async excluir() {
-        const filDao = new filhoteDAO();
-        await filDao.excluir(this);
+        await this.filhoteDAO.excluirFilhote(this.id); 
     }
 
-    
     async consulta(termoBusca) {
-        const filDao = new filhoteDAO();
-        return await filDao.consulta(termoBusca);
+        return await this.filhoteDAO.consultarFilhoPorId(); 
     }
+    
+    
 }
 export default filhote;

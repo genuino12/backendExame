@@ -15,6 +15,7 @@ app.use(express.json());
 app.use(rota);
 
 
+
 app.listen(porta, host, () => {
     console.log(`Servidor Iniciado em http://${host}:${porta}`);
 });

@@ -1,6 +1,6 @@
-import  interessadoDAO  from "../DAO/interessadoDAO.js";
+import InteressadoDAO from "../DAO/interessadoDAO.js"; 
 
-export class Interessado {
+ class Interessado {
     #nome;
     #cpf;
     #email;
@@ -11,6 +11,7 @@ export class Interessado {
         this.#cpf = cpf;
         this.#email = email;
         this.#telefone = telefone;
+        this.interessadoDAO = new InteressadoDAO(); 
     }
 
     get nome() { return this.#nome; }
@@ -32,27 +33,20 @@ export class Interessado {
     }
 
     async incluir() {
-        const intDao = new interessadoDAO();
-        await intDao.gravar(this.toJSON());
+        await this.interessadoDAO.gravarFilho(this.toJSON());
     }
 
     async alterar() {
-        const intDao = new interessadoDAO();
-        await intDao.alterar(this);
+        await this.interessadoDAO.alterarInteressado(this.toJSON());
     }
 
     async excluir() {
-        const intDao = new interessadoDAO();
-        await intDao.excluir(this);
+        await this.interessadoDAO.excluirInteressado(this.#cpf); 
     }
 
     async consulta(termoBusca) {
-        const intDao = new interessadoDAO();
-        return await intDao.consulta(termoBusca);
+        return await this.interessadoDAO.consultarInteressados(); 
     }
 }
 
-
-
 export default Interessado;
-

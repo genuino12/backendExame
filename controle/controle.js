@@ -1,18 +1,22 @@
 import Interessado from "../MODEL/interessados.js"; 
 import Filhote from "../MODEL/filhotes.js"; 
 
- class ControleGeral {
+class ControleGeral {
     async cadastrar(req, res) {
         const { tipo, dados } = req.body;
 
         if (req.method === "POST" && req.is("application/json")) {
             if (tipo === "interessado") {
-                const { cpf, nome, telefone, email, senha } = dados;
-                if (cpf && nome && telefone && email && senha) {
-                    const interessado = new Interessado(cpf, nome, telefone, email, senha);
+                const { cpf, nome, telefone, email } = dados; 
+                if (cpf && nome && telefone && email) {
+                    const interessado = new Interessado(cpf, nome, telefone, email); 
                     try {
-                        await interessado.incluir();
-                        res.status(201).json({ "Status": true, "mensagem": "Interessado cadastrado com sucesso." });
+                        if (typeof interessado.incluir === "function") {
+                            await interessado.incluir();
+                            res.status(201).json({ "Status": true, "mensagem": "Interessado cadastrado com sucesso." });
+                        } else {
+                            throw new Error("Método incluir não definido em Interessado");
+                        }
                     } catch (erro) {
                         res.status(500).json({ "Status": false, "mensagem": "Erro ao cadastrar interessado: " + erro.message });
                     }
@@ -24,8 +28,12 @@ import Filhote from "../MODEL/filhotes.js";
                 if (especie && raca) {
                     const filhote = new Filhote(especie, raca);
                     try {
-                        await filhote.incluir();
-                        res.status(201).json({ "Status": true, "mensagem": "Filhote cadastrado com sucesso." });
+                        if (typeof filhote.incluir === "function") {
+                            await filhote.incluir();
+                            res.status(201).json({ "Status": true, "mensagem": "Filhote cadastrado com sucesso." });
+                        } else {
+                            throw new Error("Método incluir não definido em Filhote");
+                        }
                     } catch (erro) {
                         res.status(500).json({ "Status": false, "mensagem": "Erro ao cadastrar filhote: " + erro.message });
                     }
@@ -45,12 +53,16 @@ import Filhote from "../MODEL/filhotes.js";
 
         if ((req.method === "PUT" || req.method === "PATCH") && req.is("application/json")) {
             if (tipo === "interessado") {
-                const { id_interessado, cpf, nome, telefone, email, senha } = dados;
-                if (id_interessado && cpf && nome && telefone && email && senha) {
-                    const interessado = new Interessado(id_interessado, cpf, nome, telefone, email, senha);
+                const { id_interessado, cpf, nome, telefone, email } = dados; 
+                if (id_interessado && cpf && nome && telefone && email) {
+                    const interessado = new Interessado(id_interessado, cpf, nome, telefone, email); 
                     try {
-                        await interessado.alterar();
-                        res.status(200).json({ "Status": true, "mensagem": "Interessado alterado com sucesso." });
+                        if (typeof interessado.alterar === "function") {
+                            await interessado.alterar();
+                            res.status(200).json({ "Status": true, "mensagem": "Interessado alterado com sucesso." });
+                        } else {
+                            throw new Error("Método alterar não definido em Interessado");
+                        }
                     } catch (erro) {
                         res.status(500).json({ "Status": false, "mensagem": "Erro ao alterar interessado: " + erro.message });
                     }
@@ -62,8 +74,12 @@ import Filhote from "../MODEL/filhotes.js";
                 if (id_filhote && especie && raca) {
                     const filhote = new Filhote(id_filhote, especie, raca);
                     try {
-                        await filhote.alterar();
-                        res.status(200).json({ "Status": true, "mensagem": "Filhote alterado com sucesso." });
+                        if (typeof filhote.alterar === "function") {
+                            await filhote.alterar();
+                            res.status(200).json({ "Status": true, "mensagem": "Filhote alterado com sucesso." });
+                        } else {
+                            throw new Error("Método alterar não definido em Filhote");
+                        }
                     } catch (erro) {
                         res.status(500).json({ "Status": false, "mensagem": "Erro ao alterar filhote: " + erro.message });
                     }
@@ -143,6 +159,8 @@ import Filhote from "../MODEL/filhotes.js";
         } else {
             res.status(405).json({ "Status": false, "mensagem": "Método não permitido." });
         }
+        
     }
+    
 }
 export default ControleGeral;

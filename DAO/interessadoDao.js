@@ -1,4 +1,4 @@
-import conectar from "./conexao.js";
+import conectar from "./conexao.js"; // Certifique-se de que a conexão com o banco de dados esteja funcionando
 import Interessado from "../MODEL/interessados.js";
 
 export class InteressadoDAO {
@@ -7,7 +7,6 @@ export class InteressadoDAO {
     async init() {
         try {
             const conexao = await conectar();
-
             const sqlInteressados = `CREATE TABLE IF NOT EXISTS interessados (
                 id_interessado INT(11) NOT NULL AUTO_INCREMENT,
                 nome VARCHAR(100) NOT NULL,
@@ -110,4 +109,5 @@ export class InteressadoDAO {
         }
     }
 }
+
 export default InteressadoDAO;
