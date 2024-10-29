@@ -1,4 +1,4 @@
-import conectar from "./conexao.js"; // Certifique-se de que a conexão com o banco de dados esteja funcionando
+import conectar from "./conexao.js"; 
 import Interessado from "../MODEL/interessados.js";
 
 export class InteressadoDAO {
